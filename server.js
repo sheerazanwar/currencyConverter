@@ -34,9 +34,17 @@ app.post('/',function(req,res){
     var reqValue = req.body.value;
     var convertFrom = req.body.from;
     var convertTo = req.body.to;
-  //  console.log(req.body);
-    parallelfx.convert({value:reqValue, from:convertFrom, to:convertTo}).then(
+    if(reqValue!=null && convertFrom!=null && convertTo!=null){
+   parallelfx.convert({value:parseInt(reqValue), from:convertFrom, to:convertTo}).then(
     function(resp){
+        var obj = [];
+     
+         obj.push({
+            result:resp.value,
+            rate:resp.rate
+        })
+    
+    res.send(obj);
          res.status('200').send(resp);
     },
     function(err){
@@ -44,6 +52,12 @@ app.post('/',function(req,res){
         res.status('500').send(err);
     }
 );
+
+    }else{
+        res.status('400').send({message:'some perameters are missing'});
+    }
+  //  console.log(req.body);
+ 
 })
 
 
