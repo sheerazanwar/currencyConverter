@@ -25,20 +25,21 @@ app.get('/getCountries',function(req,res){
 });
 
 
-app.post('/', function (req, res) {
+app.post('/converter', function (req, res) {
 
-    var reqValue = req.body.value;
-    var convertFrom = req.body.from;
-    var convertTo = req.body.to;
-    if (reqValue != null && convertFrom != null && convertTo != null) {
+    var value = req.body.value;
+    var from = req.body.from;
+    var to = req.body.to;
+    if (value != null && from != null && to != null && value!= " " && from != " " && to != " ") {
         yCurrency
-            .convert(parseInt(reqValue), convertFrom, convertTo, function (err, converted) {
+            .convert(parseFloat(value), from, to
+    , function (err, converted) {
                 if (err) {
                     res
                         .status('500')
                         .send(err);
                 } else{
-                    var rate = converted/parseInt(reqValue);
+                    var rate = converted/parseFloat(value);
                 res.status('200').send({result: converted , rate: rate});
                 }
             });
