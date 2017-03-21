@@ -24,7 +24,7 @@ app.get('/getCountries',function(req,res){
        
        
          obj.push({
-            name:countries['countries'][key]['name'],
+            name:countries['countries'][key]['name']+[" {"]+countries['countries'][key]['currency']['0']+countries['countries'][key]['currency']['1']+countries['countries'][key]['currency']['2']+["}"],
             currency:countries['countries'][key]['currency']['0']+countries['countries'][key]['currency']['1']+countries['countries'][key]['currency']['2']
         })
           
