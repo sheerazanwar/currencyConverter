@@ -21,11 +21,15 @@ app.get('/getCountries',function(req,res){
     var obj = [];
     var keys= Object.keys(countries['countries']);
     keys.forEach(function(key){
+       
+       
          obj.push({
             name:countries['countries'][key]['name'],
-            currency:countries['countries'][key]['currency']
+            currency:countries['countries'][key]['currency']['0']+countries['countries'][key]['currency']['1']+countries['countries'][key]['currency']['2']
         })
+          
     })
+  
     res.send(obj);
 });
 
