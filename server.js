@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var yCurrency = require('y-currency');
 var countries = require('countries-list');
+var math = require('mathjs');
 var port = process.env.PORT || 3000;
 
 var app = express();
@@ -43,6 +44,8 @@ app.post('/converter', function (req, res) {
                         .send(err);
                 } else{
                     var rate = converted/parseFloat(value);
+                    rate = math.round(rate,4);
+                    converted = math.round(converted, 4);
                 res.status('200').send({result: converted , rate: rate});
                 }
             });

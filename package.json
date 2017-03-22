@@ -14,6 +14,7 @@
     "country-list": "^1.1.0",
     "express": "^4.15.2",
     "express-session": "^1.15.1",
+    "mathjs": "^3.10.0",
     "parallelfx": "^1.1.2",
     "y-currency": "^1.0.3"
   }
