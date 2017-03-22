@@ -30,6 +30,9 @@ app.post('/converter', function (req, res) {
     var value = req.body.value;
     var from = req.body.from;
     var to = req.body.to;
+    if(value == '0'){
+        res.status('400').send('please input value greater than 0.0');
+    }else
     if (value != null && from != null && to != null && value!= " " && from != " " && to != " ") {
         yCurrency
             .convert(parseFloat(value), from, to
